@@ -45,7 +45,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=Europe/Moscow
       - GITURL=https://github.com/linuxserver/docker-cloud9.git #optional
       - USERNAME=root 
       - PASSWORD=rootpasswd 
@@ -57,6 +57,10 @@ services:
     depends_on:
       -phpmyadmin
     restart: unless-stopped
+  
+  pyserver:    
+     build: 
+     command: python3 /pyserver/server.py
 
 volumes:
   node-red-data:
