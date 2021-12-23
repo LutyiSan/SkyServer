@@ -22,6 +22,8 @@ services:
      # PMA_PASSWORD: root
     ports:
       - "90:80"
+    depends_on:
+      -db
 
   node-red:
     image: nodered/node-red:latest
@@ -30,6 +32,8 @@ services:
       - TZ=Europe/Moscow
     ports:
       - "1880:1880"
+    depends_on:
+      -cloud9
     networks:
       - node-red-net
     volumes:
@@ -50,6 +54,8 @@ services:
      # - /var/run/docker.sock:/var/run/docker.sock #optional
     ports:
       - 8000:8000
+    depends_on:
+      -phpmyadmin
     restart: unless-stopped
 
 volumes:
