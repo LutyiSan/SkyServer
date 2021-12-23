@@ -1,4 +1,5 @@
 version: '3.1'
+
 services:
 
   db:
@@ -42,11 +43,11 @@ services:
       - PGID=1000
       - TZ=Europe/London
       - GITURL=https://github.com/linuxserver/docker-cloud9.git #optional
-      - USERNAME= root #optional
-      - PASSWORD= rootpasswd #optional
+      - USERNAME=root 
+      - PASSWORD=rootpasswd 
     volumes:
-      - /opt/SkyServer:/pyserver #optional
-      - /var/run/docker.sock:/var/run/docker.sock #optional
+      - /opt/SkyServer:/code #optional
+     # - /var/run/docker.sock:/var/run/docker.sock #optional
     ports:
       - 8000:8000
     restart: unless-stopped
