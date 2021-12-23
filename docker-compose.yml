@@ -61,6 +61,8 @@ services:
   pyserver:    
      build: 
      command: python3 /pyserver/server.py
+     port:
+       80:70
 
 volumes:
   node-red-data:
