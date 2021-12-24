@@ -22,8 +22,6 @@ services:
      # PMA_PASSWORD: root
     ports:
       - "90:80"
-    depends_on:
-      -db
 
   node-red:
     image: nodered/node-red:latest
@@ -32,8 +30,6 @@ services:
       - TZ=Europe/Moscow
     ports:
       - "1880:1880"
-    depends_on:
-      -cloud9
     networks:
       - node-red-net
     volumes:
@@ -55,17 +51,18 @@ services:
     ports:
       - 8000:8000
     depends_on:
-      -phpmyadmin
+      - phpmyadmin
     restart: unless-stopped
   
   pyserver:    
-     build: 
+     build: ./ 
      command: python3 /pyserver/server.py
-     port:
-       80:70
+     ports:
+      -  80:70
 
 volumes:
   node-red-data:
 
 networks:
   node-red-net:
+
