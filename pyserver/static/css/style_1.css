@@ -1,0 +1,25 @@
+h1 {
+font-size: 18px;
+}
+#topper {
+background-color: #1A1D1C;
+min-height: 100px;
+max-height: 100px;
+width: 100%;
+}
+img{
+margin-top: 20px;
+margin-left: 10px;
+}
+
+#bot_menu_dropdown{
+display: none;
+}
+
+a {
+    
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif; /* Шрифт с засечками */
+    font-style: italic; /* Курсивное начертание */
+    font-size: 18px;
+}
