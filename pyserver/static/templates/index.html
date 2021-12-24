@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_1.css') }}">
+    <script src="{{ url_for('static', filename= 'js/main.js') }}"></script>
+    <title>Title</title>
+</head>
+<body>
+    <div id="topper">
+        <img src="{{ url_for('static', filename= 'image/bot.svg') }}" onclick="showHide()"/>
+    </div>
+<div id="bot_menu_dropdown" class="dropdown_content" style="display: none;">
+
+            <a href="http://109.248.201.158:1880" target="_blank">NODE_RED</a><br>
+            <a href="http://109.248.201.158:8000" target="_blank">Cloud9</a><br>
+            <a href="http://109.248.201.158:90" target="_blank">PhpMyAdmin</a>
+
+</div>
+</body>
+</html>
