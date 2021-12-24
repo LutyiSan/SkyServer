@@ -1,0 +1,69 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpasswd
+      MYSQL_DATABASE: test_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: adminpasswd
+    ports:
+      - "3306:3306"
+    volumes:
+      - /mariadb/dbdata:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_HOST: db
+      #PMA_USER: root
+      #PMA_PASSWORD: root011235813
+    ports:
+      - "90:80"
+    
+
+  node-red:
+    image: nodered/node-red:latest
+    restart: always
+    environment:
+      - TZ=Europe/Moscow
+    ports:
+      - "1880:1880"
+    networks:
+      - node-red-net
+    volumes:
+      - node-red-data:/data
+
+  cloud9:
+    image: lscr.io/linuxserver/cloud9
+    container_name: cloud9
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Moscow
+      - GITURL=https://github.com/linuxserver/docker-cloud9.git #optional
+      - USERNAME=root 
+      - PASSWORD=rootpasswd 
+    volumes:
+      - /opt/SkyServer:/code 
+     # - /var/run/docker.sock:/var/run/docker.sock #optional
+    ports:
+      - 8000:8000
+    restart: unless-stopped
+  
+  pyserver:    
+     build: ./ 
+     command: python3 /pyserver/server.py
+     ports:
+      -  80:70
+
+volumes:
+  node-red-data:
+  dbdata:
+networks:
+  node-red-net:
+
